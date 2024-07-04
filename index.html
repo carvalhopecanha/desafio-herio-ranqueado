@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibir XP do Herói</title>
+ 
+</head>
+<body>
+    <h1>DESAFIO DO HERÓI - Classificação</h1>
+    <div id="hero-info">
+      <div>  <label for="numVit">Digite a quantidade de vitórias</label>
+        <input type="number" id="qtVitorias">
+    </div>
+        <label for="numDer">Digite a quantidade de derrotas</label>
+        <input type="number" id="qtDerrotas">
+
+        <button onclick="exibirInfo()"> Calcular classificação</button>    
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+
+        function exibirInfo() {
+            let numVit = document.getElementById('qtVitorias').value;
+            let numDer = document.getElementById('qtDerrotas').value;
+            
+            let totalNum = numVit - numDer ;
+
+            let result = document.getElementById('result');
+
+            let nivelR = "Informações insuficientes para calcular o nível."
+           
+          switch (true){
+            case (totalNum >= 101):
+                nivel = 'Imortal';
+                break;
+            case (totalNum >= 91):
+                nivel = 'Lendário';
+                break;
+            case (totalNum >= 81):
+                nivel = 'Diamante';
+                break;
+            case (totalNum >= 51):
+                nivel = 'Ouro';
+                break;        
+            case (totalNum >= 21):
+                nivel = 'Prata';
+                break; 
+            case (totalNum >= 11):
+                nivel = 'Bronze';
+                break;           
+            case (totalNum >= 1):
+                nivel = 'Ferro';
+                break;
+
+            default:
+                nivel = "Precisa de mais partidas";    
+            
+          }
+
+            result.innerHTML = `Saldo de vitórias do herói: <br>${numVit}<br> Nível atual: <br>${nivel}<br>`;
+        }
+        
+
+    </script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: rgb(50, 49, 49);
+
+    }
+    .hero {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+    .xp-item {
+        margin-left: 20px;
+    }
+    label{
+        margin: 10px;
+        color: white;
+    }
+    button{
+        margin: 20px;
+        padding: 10px 15px;
+        color: white;
+        background-color: green;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        }
+        button:hover{
+            background-color: darkgreen;
+        }
+
+    #result{
+        color: white;
+        font-size: 24px;
+        font-weight: 700;
+        
+        
+    }
+    H1{
+        color: white;
+        font-size: 44px;
+        font-weight: 900;
+    }
+</style>
+</body>
+</html>
